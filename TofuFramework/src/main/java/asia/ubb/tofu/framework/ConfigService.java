@@ -3,26 +3,36 @@ package asia.ubb.tofu.framework;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigService {
 
     private final JavaPlugin plugin;
-    private List<Runnable> reloadCallbacks;
+    private final List<Runnable> reloadConfigCallbacks = new ArrayList<>();
 
     public ConfigService(JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
-    public void registerReloadCallback(Runnable callback) {
-        reloadCallbacks.add(callback);
+    public void createConfig(boolean override) {
+        plugin.saveResource("config.yml", override);
     }
 
-    public void reload() {
-        plugin.reloadConfig();
+    public void createConfig() {
+        createConfig(false);
+    }
 
-        for (Runnable reloadCallback : reloadCallbacks)
-            reloadCallback.run();
+    public void registerReloadConfigCallback(Runnable callback) {
+        reloadConfigCallbacks.add(callback);
+    }
+
+    public void reloadConfig() {
+        plugin.reloadConfig();
+    }
+
+    public void saveConfig() {
+        plugin.saveConfig();
     }
 
     public FileConfiguration getConfig() {
