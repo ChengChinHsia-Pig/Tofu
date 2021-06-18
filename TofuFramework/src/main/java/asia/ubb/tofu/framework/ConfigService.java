@@ -30,7 +30,7 @@ public class ConfigService {
     public void reloadConfig() {
         plugin.reloadConfig();
 
-        for (Runnable callback: reloadConfigCallbacks) {
+        for (Runnable callback : reloadConfigCallbacks) {
             callback.run();
         }
     }
