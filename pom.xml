@@ -11,6 +11,7 @@
 
     <modules>
         <module>TofuFramework</module>
+        <module>TofuWhitelistCleaner</module>
     </modules>
 
     <properties>
