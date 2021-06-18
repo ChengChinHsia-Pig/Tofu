@@ -1,6 +1,7 @@
 package asia.ubb.tofu.whitelistcleaner;
 
 import asia.ubb.tofu.framework.ConfigService;
+import asia.ubb.tofu.framework.TaskService;
 import asia.ubb.tofu.framework.TimeUtils;
 import asia.ubb.tofu.whitelistcleaner.tasks.CleanTask;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,9 +40,9 @@ public class TofuWhitelistCleanerPlugin extends JavaPlugin {
         getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
         getLogger().info("Offline Before Clean (Seconds):   " + offlineAllowance / 20);
 
-        // schedule clean whitelist task
-        getServer().getScheduler().scheduleSyncRepeatingTask(
-                this, new CleanTask(this, offlineAllowance, logFile),
+        TaskService taskService = new TaskService(this);
+        taskService.scheduleTask(
+                new CleanTask(this, offlineAllowance, logFile),
                 0L, cleanInterval);
     }
 
