@@ -39,6 +39,10 @@ public class ConfigService {
         plugin.saveConfig();
     }
 
+    public void saveDefaultConfig() {
+        plugin.saveDefaultConfig();
+    }
+
     public FileConfiguration getConfig() {
         return plugin.getConfig();
     }
