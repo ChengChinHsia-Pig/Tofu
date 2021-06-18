@@ -1,13 +1,13 @@
-package asia.ubb.tofu.whitelistcleaner.utils;
+package asia.ubb.tofu.framework;
 
-public class TicksUtils {
+public class TimeUtils {
 
-    private TicksUtils() {
+    private TimeUtils() {
     }
 
-    public static long parseTicks(String from) {
+    public static long parseSecond(String from) {
         StringBuilder tmp = new StringBuilder();
-        long ticks = 0;
+        long seconds = 0;
 
         for (char c : from.toCharArray()) {
             if (Character.isDigit(c)) {
@@ -16,27 +16,27 @@ public class TicksUtils {
                 long charInLong = Long.parseLong(tmp.toString().trim());
                 switch (c) {
                     case 'y':
-                        ticks += charInLong * 31556952 * 20;
+                        seconds += charInLong * 31556952;
                         break;
 
                     case 'M':
-                        ticks += charInLong * 2629746 * 20;
+                        seconds += charInLong * 2629746;
                         break;
 
                     case 'd':
-                        ticks += charInLong * 86400 * 20;
+                        seconds += charInLong * 86400;
                         break;
 
                     case 'h':
-                        ticks += charInLong * 3600 * 20;
+                        seconds += charInLong * 3600;
                         break;
 
                     case 'm':
-                        ticks += charInLong * 60 * 20;
+                        seconds += charInLong * 60;
                         break;
 
                     case 's':
-                        ticks += charInLong * 20;
+                        seconds += charInLong;
                         break;
 
                     default:
@@ -46,7 +46,11 @@ public class TicksUtils {
             }
         }
 
-        return ticks;
+        return seconds;
+    }
+
+    public static long parseTicks(String from) {
+        return parseSecond(from) * 20;
     }
 
 }

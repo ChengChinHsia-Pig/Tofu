@@ -11,4 +11,5 @@
     </parent>
 
     <artifactId>tofu-framework</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 </project>

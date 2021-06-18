@@ -1,7 +1,7 @@
 package asia.ubb.tofu.whitelistcleaner;
 
+import asia.ubb.tofu.framework.TimeUtils;
 import asia.ubb.tofu.whitelistcleaner.tasks.CleanTask;
-import asia.ubb.tofu.whitelistcleaner.utils.TicksUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -29,10 +29,10 @@ public class TofuWhitelistCleaner extends JavaPlugin {
         saveLog();
 
         // get clean interval from config
-        long cleanInterval = TicksUtils.parseTicks(
+        long cleanInterval = TimeUtils.parseTicks(
                 getConfig().getString("cleaner.interval", "1d"));
         // get offline allowance from config
-        long offlineAllowance = TicksUtils.parseTicks(
+        long offlineAllowance = TimeUtils.parseTicks(
                 getConfig().getString("cleaner.offline-allowance", "3M"));
         // print clean interval and offline allowance to console
         getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
