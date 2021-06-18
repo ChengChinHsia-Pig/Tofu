@@ -12,6 +12,7 @@
     <modules>
         <module>TofuFramework</module>
         <module>TofuWhitelistCleaner</module>
+        <module>TofuJoinCooldown</module>
     </modules>
 
     <properties>
