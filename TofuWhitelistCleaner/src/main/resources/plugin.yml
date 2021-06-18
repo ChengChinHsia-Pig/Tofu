@@ -1,4 +1,4 @@
-main: asia.ubb.tofu.whitelistcleaner.TofuWhitelistCleaner
+main: asia.ubb.tofu.whitelistcleaner.TofuWhitelistCleanerPlugin
 name: TofuWhitelistCleaner
 version: 0.0.4-SNAPSHOT
 description: Auto whitelist cleaner plugin by the Union of Black Bean.

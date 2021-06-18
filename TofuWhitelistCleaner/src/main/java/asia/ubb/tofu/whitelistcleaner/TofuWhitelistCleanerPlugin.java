@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 
-public class TofuWhitelistCleaner extends JavaPlugin {
+public class TofuWhitelistCleanerPlugin extends JavaPlugin {
 
     private final File logFile = new File(getDataFolder(), getConfig().getString("logging.file.filename", "log.txt"));
 
