@@ -29,6 +29,10 @@ public class ConfigService {
 
     public void reloadConfig() {
         plugin.reloadConfig();
+
+        for (Runnable callback: reloadConfigCallbacks) {
+            callback.run();
+        }
     }
 
     public void saveConfig() {
