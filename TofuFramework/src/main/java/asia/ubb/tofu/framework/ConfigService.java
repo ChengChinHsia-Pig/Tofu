@@ -30,8 +30,10 @@ public class ConfigService {
     public void reloadConfig(boolean runCallbacks) {
         plugin.reloadConfig();
 
-        for (Runnable callback : reloadConfigCallbacks) {
-            callback.run();
+        if (runCallbacks) {
+            for (Runnable callback : reloadConfigCallbacks) {
+                callback.run();
+            }
         }
     }
 
