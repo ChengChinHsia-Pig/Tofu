@@ -41,7 +41,7 @@ public class CleanTask implements Runnable {
                         if (lastPlayed == 0)
                             continue;
                     // calculate player offline time
-                    long offlineTime = (now.getTime() - lastPlayed) / 1000 * 20;
+                    long offlineTime = (now.getTime() - lastPlayed) / 1000;
 
                     // check if player offline time is longer than allowed and if player is not online
                     if (offlineTime >= offlineBeforeClean && !player.isOnline()) {

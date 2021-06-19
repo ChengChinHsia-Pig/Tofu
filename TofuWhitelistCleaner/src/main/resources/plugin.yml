@@ -7,3 +7,14 @@ load: POSTWORLD
 author: Union of Black Bean
 authors: [ leungyauming ]
 prefix: TofuWhitelistCleaner
+
+commands:
+  tofuwhitelistcleaner:
+    permission: tofu.whitelistcleaner.whitelistcleaner
+    usage: "Usage: /<command> [reload]"
+
+permissions:
+  tofu.whitelistcleaner.*:
+    default: op
+    children:
+      tofu.whitelistcleaner.whitelistcleaner: true

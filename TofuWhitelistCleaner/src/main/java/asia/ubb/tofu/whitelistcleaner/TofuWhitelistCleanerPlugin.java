@@ -1,8 +1,8 @@
 package asia.ubb.tofu.whitelistcleaner;
 
-import asia.ubb.tofu.framework.ConfigService;
-import asia.ubb.tofu.framework.TaskService;
-import asia.ubb.tofu.framework.TimeUtils;
+import asia.ubb.tofu.framework.*;
+import asia.ubb.tofu.whitelistcleaner.commands.TofuWhitelistCleanerCommand;
+import asia.ubb.tofu.whitelistcleaner.subcommands.ReloadSubcommand;
 import asia.ubb.tofu.whitelistcleaner.tasks.CleanTask;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,6 +13,11 @@ import java.util.logging.Level;
 public class TofuWhitelistCleanerPlugin extends JavaPlugin {
 
     private final File logFile = new File(getDataFolder(), getConfig().getString("logging.file.filename", "log.txt"));
+    private ConfigService configService;
+    private CommandService commandService;
+    private TaskService taskService;
+    private LogService logService;
+    private PluginService pluginService;
 
     private void saveLog() {
         try {
@@ -23,27 +28,50 @@ public class TofuWhitelistCleanerPlugin extends JavaPlugin {
         }
     }
 
-    @Override
-    public void onEnable() {
-        // save default config
-        saveDefaultConfig();
-        // save cleaner log file
-        saveLog();
+    private void init() {
+        pluginService.registerReloadCallback(() -> {
+            taskService.cancelAllTasks();
+            configService.reloadConfig(false);
+            main();
+        });
 
-        ConfigService configService = new ConfigService(this);
+        configService.saveDefaultConfig();
+        saveLog();
+    }
+
+    private void main() {
+        // load clean interval in ticks because spigot api accept ticks
         long cleanInterval = TimeUtils.parseTicks(
                 configService.getConfig().getString("cleaner.interval", "1d"));
-        long offlineAllowance = TimeUtils.parseTicks(
+        // load offline allowance in seconds because seconds is used in clean task
+        long offlineAllowance = TimeUtils.parseSecond(
                 configService.getConfig().getString("cleaner.offline-allowance", "3M"));
 
-        // print clean interval and offline allowance to console
-        getLogger().info("Clean Interval (Seconds):         " + cleanInterval / 20);
-        getLogger().info("Offline Before Clean (Seconds):   " + offlineAllowance / 20);
+        logService.info("Clean Interval (Seconds):    %d", cleanInterval / 20);
+        logService.info("Offline Allowance (Seconds): %d", offlineAllowance / 20);
 
-        TaskService taskService = new TaskService(this);
         taskService.scheduleTask(
                 new CleanTask(this, offlineAllowance, logFile),
                 0L, cleanInterval);
+
+        configService.registerReloadConfigCallback(pluginService::reload);
+
+        commandService.registerCommand(
+                "tofuwhitelistcleaner",
+                new TofuWhitelistCleanerCommand()
+                        .registerSubcommand("reload", new ReloadSubcommand(pluginService)));
+    }
+
+    @Override
+    public void onEnable() {
+        configService = new ConfigService(this);
+        commandService = new CommandService(this);
+        taskService = new TaskService(this);
+        logService = new LogService(this);
+        pluginService = new PluginService();
+
+        init();
+        main();
     }
 
 }
