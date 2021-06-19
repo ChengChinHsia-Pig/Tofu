@@ -48,7 +48,7 @@ public class TofuWhitelistCleanerPlugin extends JavaPlugin {
                 configService.getConfig().getString("cleaner.offline-allowance", "3M"));
 
         logService.info("Clean Interval (Seconds):    %d", cleanInterval / 20);
-        logService.info("Offline Allowance (Seconds): %d", offlineAllowance / 20);
+        logService.info("Offline Allowance (Seconds): %d", offlineAllowance);
 
         taskService.scheduleTask(
                 new CleanTask(this, offlineAllowance, logFile),
