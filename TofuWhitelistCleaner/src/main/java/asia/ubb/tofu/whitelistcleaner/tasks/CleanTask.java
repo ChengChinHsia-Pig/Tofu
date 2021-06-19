@@ -37,7 +37,7 @@ public class CleanTask implements Runnable {
                     // get last played time
                     long lastPlayed = player.getLastPlayed();
                     // skip the player if the player has never played before
-                    if (plugin.getConfig().getBoolean("cleaner.remove-never-played", false))
+                    if (!plugin.getConfig().getBoolean("cleaner.remove-never-played", false))
                         if (lastPlayed == 0)
                             continue;
                     // calculate player offline time
