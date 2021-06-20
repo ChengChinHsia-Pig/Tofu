@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PluginService {
 
-    private List<Runnable> reloadCallbacks = new ArrayList<>();
+    private final List<Runnable> reloadCallbacks = new ArrayList<>();
 
     public void registerReloadCallback(Runnable callback) {
         reloadCallbacks.add(callback);

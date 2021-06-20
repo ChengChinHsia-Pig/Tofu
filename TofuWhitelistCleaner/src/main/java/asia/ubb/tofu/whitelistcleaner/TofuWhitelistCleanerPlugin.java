@@ -2,7 +2,6 @@ package asia.ubb.tofu.whitelistcleaner;
 
 import asia.ubb.tofu.framework.*;
 import asia.ubb.tofu.whitelistcleaner.commands.TofuWhitelistCleanerCommand;
-import asia.ubb.tofu.whitelistcleaner.subcommands.ReloadSubcommand;
 import asia.ubb.tofu.whitelistcleaner.tasks.CleanTask;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -56,10 +55,9 @@ public class TofuWhitelistCleanerPlugin extends JavaPlugin {
 
         configService.registerReloadConfigCallback(pluginService::reload);
 
-        Command whitelistCleanerCommand = new TofuWhitelistCleanerCommand();
-        whitelistCleanerCommand.registerSubcommand("reload", new ReloadSubcommand(pluginService));
+        DefaultCommandExecutor whitelistCleanerDefaultCommandExecutor = new TofuWhitelistCleanerCommand(pluginService);
         commandService.registerCommand(
-                "tofuwhitelistcleaner", whitelistCleanerCommand);
+                "tofuwhitelistcleaner", whitelistCleanerDefaultCommandExecutor);
     }
 
     @Override

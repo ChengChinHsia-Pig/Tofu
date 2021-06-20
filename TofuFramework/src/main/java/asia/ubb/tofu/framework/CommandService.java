@@ -10,9 +10,9 @@ public class CommandService {
         this.plugin = plugin;
     }
 
-    public Command registerCommand(String alias, Command command) {
-        plugin.getCommand(alias).setExecutor(command);
-        return command;
+    public DefaultCommandExecutor registerCommand(String alias, DefaultCommandExecutor executor) {
+        plugin.getCommand(alias).setExecutor(executor);
+        return executor;
     }
 
 }
