@@ -1,5 +1,6 @@
-package asia.ubb.tofu.framework;
+package asia.ubb.tofu.framework.services;
 
+import asia.ubb.tofu.framework.command.DefaultCommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CommandService {

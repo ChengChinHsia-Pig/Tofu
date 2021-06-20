@@ -1,6 +1,6 @@
 package asia.ubb.tofu.joincooldown;
 
-import asia.ubb.tofu.framework.TimeUtils;
+import asia.ubb.tofu.framework.utils.TimeUtils;
 import asia.ubb.tofu.joincooldown.listeners.PlayerJoinEventListener;
 import asia.ubb.tofu.joincooldown.listeners.PlayerQuitEventListener;
 import org.bukkit.configuration.file.FileConfiguration;

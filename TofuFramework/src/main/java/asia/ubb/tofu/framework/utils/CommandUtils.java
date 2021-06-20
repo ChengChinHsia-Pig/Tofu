@@ -1,4 +1,4 @@
-package asia.ubb.tofu.framework;
+package asia.ubb.tofu.framework.utils;
 
 public class CommandUtils {
 

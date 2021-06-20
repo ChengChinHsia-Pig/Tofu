@@ -1,4 +1,4 @@
-package asia.ubb.tofu.framework;
+package asia.ubb.tofu.framework.subcommand;
 
 import org.bukkit.command.CommandSender;
 

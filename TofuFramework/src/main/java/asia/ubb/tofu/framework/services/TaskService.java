@@ -1,4 +1,4 @@
-package asia.ubb.tofu.framework;
+package asia.ubb.tofu.framework.services;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;

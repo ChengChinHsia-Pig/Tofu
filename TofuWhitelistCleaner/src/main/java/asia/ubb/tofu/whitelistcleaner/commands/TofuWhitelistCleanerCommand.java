@@ -1,8 +1,8 @@
 package asia.ubb.tofu.whitelistcleaner.commands;
 
-import asia.ubb.tofu.framework.DefaultCommandExecutor;
-import asia.ubb.tofu.framework.PluginService;
-import asia.ubb.tofu.framework.Subcommand;
+import asia.ubb.tofu.framework.command.DefaultCommandExecutor;
+import asia.ubb.tofu.framework.services.PluginService;
+import asia.ubb.tofu.framework.subcommand.Subcommand;
 import org.bukkit.command.CommandSender;
 
 public class TofuWhitelistCleanerCommand extends DefaultCommandExecutor {

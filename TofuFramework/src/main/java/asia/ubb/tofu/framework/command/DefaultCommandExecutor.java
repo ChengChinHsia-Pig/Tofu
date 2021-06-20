@@ -1,5 +1,8 @@
-package asia.ubb.tofu.framework;
+package asia.ubb.tofu.framework.command;
 
+import asia.ubb.tofu.framework.utils.CommandUtils;
+import asia.ubb.tofu.framework.subcommand.Subcommand;
+import asia.ubb.tofu.framework.subcommand.SubcommandExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
