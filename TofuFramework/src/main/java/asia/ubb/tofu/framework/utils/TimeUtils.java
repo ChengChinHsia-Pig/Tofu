@@ -16,18 +16,22 @@ public class TimeUtils {
                 long charInLong = Long.parseLong(tmp.toString().trim());
                 switch (c) {
                     case 'y':
-                        seconds += charInLong * 31556952;
+                        // 60 * 60 * 24 * 30.42 (cor. to 2 d.p.) * 12
+                        seconds += charInLong * 31539456;
                         break;
 
                     case 'M':
-                        seconds += charInLong * 2629746;
+                        // 60 * 60 * 24 * 30.42 (cor. to 2 d.p.)
+                        seconds += charInLong * 2628288;
                         break;
 
                     case 'd':
+                        // 60 * 60 * 24
                         seconds += charInLong * 86400;
                         break;
 
                     case 'h':
+                        // 60 * 60
                         seconds += charInLong * 3600;
                         break;
 
