@@ -55,9 +55,9 @@ public class TofuWhitelistCleanerPlugin extends JavaPlugin {
 
         configService.registerReloadConfigCallback(pluginService::reload);
 
-        DefaultCommandExecutor whitelistCleanerDefaultCommandExecutor = new TofuWhitelistCleanerCommand(pluginService);
+        DefaultCommandExecutor mainCommandExecutor = new TofuWhitelistCleanerCommand(pluginService);
         commandService.registerCommand(
-                "tofuwhitelistcleaner", whitelistCleanerDefaultCommandExecutor);
+                "tofuwhitelistcleaner", mainCommandExecutor);
     }
 
     @Override
