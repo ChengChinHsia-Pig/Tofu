@@ -12,4 +12,12 @@
 
     <artifactId>tofu-join-cooldown</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>asia.ubb</groupId>
+            <artifactId>tofu-framework</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
