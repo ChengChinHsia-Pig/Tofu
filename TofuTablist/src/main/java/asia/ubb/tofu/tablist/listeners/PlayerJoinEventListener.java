@@ -19,7 +19,7 @@ public class PlayerJoinEventListener implements Listener {
 
         player.setPlayerListName(
                 ChatColor.translateAlternateColorCodes(
-                        '$', prefixBuilder + player.getName()));
+                        '&', prefixBuilder + player.getName()));
     }
 
 }
