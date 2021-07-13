@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 public class PlayerJoinEventListener implements Listener {
 
-    private String format;
+    private final String format;
 
     public PlayerJoinEventListener(Plugin plugin) {
         format = plugin.getConfig().getString("format", "{prefixes}&r {name}");
