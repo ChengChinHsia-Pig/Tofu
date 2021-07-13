@@ -6,8 +6,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.Plugin;
 
 public class PlayerJoinEventListener implements Listener {
+
+    private String format;
+
+    public PlayerJoinEventListener(Plugin plugin) {
+        format = plugin.getConfig().getString("format", "{prefixes}&r {name}");
+    }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -17,9 +24,11 @@ public class PlayerJoinEventListener implements Listener {
         for (String prefix : LuckPermsUtils.getUserPrefixes(player.getUniqueId()).values())
             prefixBuilder.append(prefix);
 
-        player.setPlayerListName(
-                ChatColor.translateAlternateColorCodes(
-                        '&', prefixBuilder + player.getName()));
+        String result = format
+                .replace("{prefixes}", prefixBuilder.toString())
+                .replace("{name}", player.getName());
+
+        player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', result));
     }
 
 }

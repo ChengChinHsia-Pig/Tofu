@@ -7,7 +7,9 @@ public class TofuTablistPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(), this);
+        saveDefaultConfig();
+
+        getServer().getPluginManager().registerEvents(new PlayerJoinEventListener(this), this);
     }
 
 }
