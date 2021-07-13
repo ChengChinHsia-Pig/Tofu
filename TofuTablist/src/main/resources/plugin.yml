@@ -7,3 +7,4 @@ load: POSTWORLD
 author: Union of Black Bean
 authors: [ leungyauming ]
 prefix: TofuTablist
+depend: [ LuckPerms ]
